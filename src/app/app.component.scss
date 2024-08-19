@@ -1,0 +1,41 @@
+// Variables
+$toolbar-background: #01e014;
+$button-background: blue;
+$button-text-color: black;
+$button-hover-background: white;
+$title-font-size: 24px;
+$button-font-size: 16px;
+
+// Estilo para la barra de herramientas
+mat-toolbar {
+  background-color: $toolbar-background; // Fondo más oscuro para el navbar
+  color: $button-text-color; // Color dorado para el texto
+  padding: 0 20px; // Espaciado interno
+  
+  // Estilo para los botones dentro de la barra de herramientas
+  button {
+    color: $button-text-color; // Color del texto
+    background-color: $button-background; // Fondo del botón
+    font-weight: bold; // Negrita para los botones
+    font-size: $button-font-size; // Tamaño de fuente más grande
+    border-radius: 100cqmax; // Sin borde
+    
+    &:hover {
+      color: $button-text-color; // Color del texto al pasar el mouse
+      background-color: $button-hover-background; // Fondo oscuro al pasar el mouse
+    }
+
+  }
+  
+  
+  // Estilo para el título dentro de la barra de herramientas
+  span {
+    font-size: $title-font-size; // Tamaño de fuente más grande para el título
+    font-weight: bold; // Negrita para el título
+  }
+}
+
+// Espaciador dentro de la barra de herramientas
+.spacer {
+  flex: 1 1 auto;
+}

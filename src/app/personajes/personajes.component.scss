@@ -1,0 +1,157 @@
+/* Variables */
+$background-color-dark: #1e1e1e;
+$background-color-card: #003780;
+$text-color-white: #ffffff;
+$text-color-yellow: #ffcc00;
+$text-color-light-yellow: #ffe96a;
+$green-color: green;
+$red-color: red;
+$highlight-color: #555555; /* Color de resaltado al pasar el mouse */
+$border-color-highlight: #ffcc00; /* Color del borde al pasar el mouse */
+
+/* Estilo general para el cuerpo y el HTML */
+html, body {
+  height: 100%; /* Asegura que el fondo cubra toda la página */
+  margin: 0;
+  background-color: $background-color-dark; /* Fondo de la página, un tono más oscuro que la tarjeta */
+  color: $text-color-white;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Estilo para el contenedor de personajes */
+.character-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra las tarjetas en el contenedor */
+  gap: 20px; /* Espacio entre las tarjetas */
+  padding: 20px;
+}
+
+/* Estilo para la tarjeta de personaje */
+.character-card {
+  display: flex;
+  flex-direction: column; /* Coloca la imagen y los detalles en columna */
+  width: 220px; /* Ajusta el tamaño de la tarjeta */
+  background-color: $background-color-card; /* Fondo de la tarjeta */
+  color: $text-color-white;
+  border-radius: 8px;
+  overflow: hidden; /* Oculta el contenido que se desborda de los bordes de la tarjeta */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease, filter 0.3s ease; /* Transiciones suaves para el cambio de fondo, aumento, sombra y borde */
+  
+  &.alive {
+    background-color: $green-color; /* Fondo verde para personajes vivos */
+  }
+
+  &.dead {
+    background-color: $red-color; /* Fondo rojo para personajes muertos */
+  }
+
+  &:hover {
+    transform: scale(1.1); /* Aumenta el tamaño de la tarjeta al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7); /* Sombra más fuerte para resaltar */
+    border: 2px solid $border-color-highlight; /* Agrega un borde colorido */
+    filter: brightness(1.2); /* Aumenta el brillo de la tarjeta */
+    background-color: $highlight-color; /* Cambia el color de fondo al pasar el mouse */
+  }
+}
+
+/* Estilo para la imagen del personaje */
+.character-image {
+  width: 100px; /* Ajusta el ancho de la imagen */
+  height: 100px; /* Ajusta la altura de la imagen */
+  border-radius: 50%; /* Hace la imagen redonda */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+  margin: 10px auto; /* Centra la imagen y agrega margen superior e inferior */
+  transition: transform 0.6s ease; /* Transición suave para el giro de la imagen */
+  
+  /* Efecto al pasar el mouse sobre la tarjeta */
+  .character-card:hover & {
+    transform: rotateY(360deg); /* Rota la imagen alrededor del eje Y */
+  }
+}
+
+/* Estilo para los detalles del personaje */
+.character-details {
+  padding: 10px;
+  display: flex;
+  flex-direction: column; /* Coloca la información en columna */
+}
+
+/* Estilo para el ID del personaje */
+.character-id {
+  font-size: 12px;
+  color: $text-color-white; /* Color blanco para el ID */
+  font-weight: bold;
+  margin-bottom: 5px; /* Espacio debajo del ID */
+}
+
+/* Estilo para el nombre del personaje */
+.character-details h2 {
+  margin: 0;
+  font-size: 14px; /* Ajusta el tamaño del texto del nombre */
+  color: $text-color-white; /* Color blanco para el nombre del personaje */
+  font-weight: bold; /* Negrita para el nombre */
+}
+
+/* Estilo para el estado del personaje */
+.status {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  font-size: 12px;
+  color: $text-color-white; /* Color blanco para el estado y especie */
+}
+
+/* Estilo para el punto indicador de estado */
+.status-dot {
+  height: 8px; /* Ajusta el tamaño del punto */
+  width: 8px; /* Ajusta el tamaño del punto */
+  border-radius: 50%;
+  margin-right: 5px; /* Espacio entre el punto y el texto */
+  
+  &.alive {
+    background-color: $green-color;
+  }
+
+  &.dead {
+    background-color: $red-color;
+  }
+}
+
+/* Estilo para la ubicación y primera aparición */
+.location, .first-seen {
+  margin: 5px 0 0 0; /* Espacio entre las líneas */
+  font-size: 10px; /* Ajusta el tamaño del texto */
+  color: $text-color-light-yellow; /* Color gris para el título */
+  font-weight: bold; /* Negrita para el título */
+  
+  span {
+    display: block; /* Asegura que los datos estén debajo del título */
+    color: $text-color-white; /* Color blanco para los datos */
+    font-weight: normal; /* Normal para los datos */
+    margin-top: 2px; /* Espacio entre el título y el dato */
+  }
+}
+
+/* Estilo para el paginador */
+mat-paginator {
+  color: $text-color-white; /* Color blanco para los controles de paginación */
+  background-color: #3a3a3a; /* Fondo oscuro para el paginador */
+  border-top: 1px solid $text-color-white; /* Línea superior blanca para separar */
+  padding: 5px;
+  
+  .mat-paginator-range-label,
+  .mat-paginator-icon {
+    color: $text-color-white !important; /* Color blanco para el texto e íconos */
+  }
+
+  .mat-paginator-navigation-button {
+    color: $text-color-white; /* Color blanco para los botones */
+    border: none; /* Sin borde para un diseño más limpio */
+    background-color: transparent; /* Fondo transparente */
+    
+    &:hover {
+      background-color: #444444; /* Fondo oscuro al pasar el mouse */
+    }
+  }
+}
